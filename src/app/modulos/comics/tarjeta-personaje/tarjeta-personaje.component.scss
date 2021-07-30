@@ -1,5 +1,5 @@
 .example-card {
-    max-width: 400px;
+    max-width: 600px;
   }
   
   .example-header-image {
@@ -16,3 +16,19 @@
     margin-left: -7%;
     margin-top: -9%;
   }
+
+  .mat-card-header .mat-card-title {
+      position: relative;
+      z-index: 2;
+      margin-top: -12%;
+      font-size: 20px;
+  }
+
+  .mat-card-header .mat-card-subtitle {
+    text-align: justify;
+    }
+
+    .subtituloComicsRelacionado {
+        color: rgba(0,0,0,.54);
+        font-weight: bold;
+    }
