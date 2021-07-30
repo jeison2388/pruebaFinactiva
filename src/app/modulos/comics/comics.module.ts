@@ -3,19 +3,20 @@ import { CommonModule } from '@angular/common';
 import { ListaPersonajesComponent } from './lista-personajes/lista-personajes.component';
 import { RouterModule } from '@angular/router';
 import { GenericosModule } from '../genericos/genericos.module';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { TarjetaPersonajeComponent } from './tarjeta-personaje/tarjeta-personaje.component';
+import {MatCardModule} from '@angular/material/card';
 
 export const routes = [
   { path: '', component: ListaPersonajesComponent },
 ];
 
 @NgModule({
-  declarations: [ListaPersonajesComponent],
+  declarations: [ListaPersonajesComponent, TarjetaPersonajeComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     GenericosModule,
+    MatCardModule
     
   ]
 })

@@ -1,0 +1,18 @@
+.example-card {
+    max-width: 400px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://media.vandalsports.com/i/640x360/4-2021/2021427125442_1.jpg');
+    background-size: cover;
+  }
+
+  .mat-card-avatar {
+    width: 180px;
+    height: 180px;
+    font-size: 40px;
+    position: relative;
+    z-index: 2;
+    margin-left: -7%;
+    margin-top: -9%;
+  }
