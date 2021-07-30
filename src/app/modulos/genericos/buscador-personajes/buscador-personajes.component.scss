@@ -1,3 +1,54 @@
+// tema material modificar para banner superio
+.fondoBuscador {
+  background-color: black;
+}
+
 .example-spacer {
     flex: 1 1 auto;
   }
+
+.imgLogo {
+  width: 8%;
+}
+
+@media all and (min-width: 360px) {
+  .imgLogo{
+    width: 35%;
+  }
+}
+
+@media all and (min-width: 400px) {
+  .imgLogo{
+    width: 25%;
+  }
+}
+
+@media all and (min-width: 450px) {
+  .imgLogo{
+    width: 22%;
+  }
+}
+
+@media all and (min-width: 520px) {
+  .imgLogo{
+    width: 20%;
+  }
+}
+
+@media all and (min-width: 720px) {
+  .imgLogo{
+    width: 15%;
+  }
+}
+
+@media all and (min-width: 1024px) {
+  .imgLogo{
+    width: 12%;
+  }
+}
+
+@media all and (min-width: 1280px)  {
+  .imgLogo{
+    width: 7%;
+  }
+}
