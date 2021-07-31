@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { BuscadorPersonajesComponent } from './modulos/genericos/buscador-personajes/buscador-personajes.component';
 import { GenericosModule } from './modulos/genericos/genericos.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { GenericosModule } from './modulos/genericos/genericos.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     NgxSpinnerModule,
-    GenericosModule
+    GenericosModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
