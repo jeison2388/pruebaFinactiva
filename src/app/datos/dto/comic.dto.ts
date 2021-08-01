@@ -7,4 +7,5 @@ export interface ComicDto{
     description: String
     precio : number
     resourceURI : string
+    name: String
 }
