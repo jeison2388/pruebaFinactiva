@@ -5,7 +5,8 @@ import { RouterModule } from '@angular/router';
 import { GenericosModule } from '../genericos/genericos.module';
 import { TarjetaPersonajeComponent } from './tarjeta-personaje/tarjeta-personaje.component';
 import {MatCardModule} from '@angular/material/card';
-
+import {NgxPaginationModule} from 'ngx-pagination';
+import {MatGridListModule} from '@angular/material/grid-list';
 export const routes = [
   { path: '', component: ListaPersonajesComponent },
 ];
@@ -16,8 +17,9 @@ export const routes = [
     CommonModule,
     RouterModule.forChild(routes),
     GenericosModule,
-    MatCardModule
-    
+    MatCardModule,
+    MatGridListModule,
+    NgxPaginationModule,
   ]
 })
 export class ComicsModule { }

@@ -20,7 +20,7 @@ export class MarvelService {
     return new Observable(observador =>{
       this.http.get<ListaPersonajeDto>(url).subscribe(respuesta =>{
         let listaPersonaje: ListaPersonajeModel = PersonajeAdapter.listDtoToModel(respuesta)
-        console.log(listaPersonaje)
+        observador.next(listaPersonaje)
       })
     })
   }

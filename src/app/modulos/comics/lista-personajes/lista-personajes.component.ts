@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {MatTableDataSource} from '@angular/material/table';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MarvelService } from 'src/app/datos/api/marvel.service';
+import { ListaPersonajeModel } from 'src/app/dominio/modelos/listaPersonajes.model';
+import { PersonajeModel } from 'src/app/dominio/modelos/personaje.model';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-lista-personajes',
@@ -8,12 +12,30 @@ import { MarvelService } from 'src/app/datos/api/marvel.service';
 })
 export class ListaPersonajesComponent implements OnInit {
 
-  constructor(private servicioMarvel: MarvelService) { }
+  @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
+
+  listaDatos: ListaPersonajeModel
+  paginaActual: number
+
+  constructor(private servicioMarvel: MarvelService) { 
+    this.listaDatos = new ListaPersonajeModel()
+    this.paginaActual = 1
+  }
 
   ngOnInit(): void {
-    this.servicioMarvel.getPersonajes(1).subscribe(result =>{
+    this.getPersonajes()
+  }
+
+  getPersonajes(){
+    this.servicioMarvel.getPersonajes(this.paginaActual).subscribe(result =>{
       console.log(result)
+      this.listaDatos = result
     })
+  }
+
+  cambiarPagina(paginaNueva: number): void{
+    this.paginaActual = paginaNueva
+    this.getPersonajes()
   }
 
 }

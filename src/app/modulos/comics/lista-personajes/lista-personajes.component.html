@@ -1,7 +1,13 @@
 <app-buscador-personajes></app-buscador-personajes>
 
-<div style="max-width: 50%; max-height: 50%; margin: 10%;">
-    <app-tarjeta-personaje></app-tarjeta-personaje>
-</div>
+<div>
+    <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile *ngFor="let personaje of listaDatos.listaPersonajes 
+        | paginate: { itemsPerPage: 10, currentPage: paginaActual, 
+            totalItems: listaDatos.totalRegistros
+            }">1</mat-grid-tile> 
+    </mat-grid-list>
 
-<p>lista-personajes works!</p>
+    <pagination-controls (pageChange)="cambiarPagina($event)"></pagination-controls>
+
+</div>
