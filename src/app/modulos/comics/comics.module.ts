@@ -11,6 +11,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ListaComicsComponent } from './lista-comics/lista-comics.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { TarjetaComicComponent } from './tarjeta-comic/tarjeta-comic.component';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
 export const routes = [
   { path: '', component: ListaPersonajesComponent },
 ];
@@ -25,7 +26,8 @@ export const routes = [
     MatGridListModule,
     NgxPaginationModule,
     FlexLayoutModule,
-    MatDialogModule
+    MatDialogModule,
+    IvyCarouselModule
   ]
 })
 export class ComicsModule { }

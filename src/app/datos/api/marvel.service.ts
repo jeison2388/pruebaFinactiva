@@ -20,7 +20,6 @@ export class MarvelService {
 
   getPersonajes(numeroPagina: number): Observable<ListaPersonajeModel>{
     let url = environment.urlBase + SERVICIO_PERSONAJES + CANTIDAD_REGISTROS + PAGINA_SOLICITADA + `${numeroPagina}&` + API_KEY + environment.apiKey
-   
     return new Observable(observador =>{
       this.http.get<ListaPersonajeDto>(url).subscribe(respuesta =>{
         let listaPersonaje: ListaPersonajeModel = PersonajeAdapter.listDtoToModel(respuesta)
@@ -34,17 +33,17 @@ export class MarvelService {
     return new Observable(observador =>{
       this.http.get<ListaComicDto>(url).subscribe(respuesta =>{
         let comic: ComicModel = ComicAdapter.toModel(respuesta.data.results[0])
-        console.log(comic)
+        observador.next(comic)
       })
     })
   }
 
-  getTodosComicsPersonajeDesdeUrl(urlComic:String){
+  getTodosComicsPersonajeDesdeUrl(urlComic:String): Observable<ComicModel[]>{
     let url = urlComic + `?${API_KEY}${environment.apiKey}`
     return new Observable(observador =>{
       this.http.get<ListaComicDto>(url).subscribe(respuesta =>{
         let listaComics: ComicModel[] = ComicAdapter.listDtoToModel(respuesta.data.results)
-        console.log(listaComics)
+        observador.next(listaComics)
       })
     })
   }

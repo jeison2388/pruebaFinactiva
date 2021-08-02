@@ -1,0 +1,32 @@
+.example-card {
+    max-width: 450px;
+  }
+  
+  .mat-card-avatar {
+    width: 250px !important;
+    height: 350px !important;
+    border-radius: 0%;
+  }
+
+  .imagenBotonAgregarComic{
+    height: 20px !important; 
+    width: 20px !important;
+  }
+
+  .textoBotonModalComic{
+      color: red;
+      margin-top: 15px;
+      font-weight: bold;
+  }
+
+  .botonAgregarComic{
+    background-color: #523737;
+    border-color: #523737;
+    border: #523737;
+  }
+
+  .botonComprarComic{
+    background-color: #F3F1F1;
+    border-color: #F3F1F1;
+    border: #F3F1F1;
+  }

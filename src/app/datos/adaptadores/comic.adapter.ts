@@ -31,9 +31,8 @@ export class ComicAdapter {
         comic.id = comicDto.id
         comic.nombre = comicDto.title
         comic.descripcion = comicDto.description
-        comic.imagen = comicDto.thumbnail.path + '/portrait_uncanny'+ comicDto.thumbnail.extension
+        comic.imagen = comicDto.thumbnail.path + '/portrait_uncanny.'+ comicDto.thumbnail.extension
         comic.precio = comicDto.prices[0].price
-
         return comic
     }
 }

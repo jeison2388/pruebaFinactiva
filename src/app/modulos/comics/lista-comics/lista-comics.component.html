@@ -1,1 +1,6 @@
-<p>lista-comics works!</p>
+<carousel [loop]= "true" [cellWidth]="500" [height]="450">
+    <div class="carousel-cell" *ngFor="let comic of listaComicsVisualizar" >
+       <app-tarjeta-comic [comic]="comic"></app-tarjeta-comic>
+    </div>
+    <div class="carousel-cell"> </div>
+</carousel>

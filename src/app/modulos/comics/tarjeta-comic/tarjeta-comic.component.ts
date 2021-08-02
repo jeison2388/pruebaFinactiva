@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ComicModel } from 'src/app/dominio/modelos/comic.model';
 
 @Component({
   selector: 'app-tarjeta-comic',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TarjetaComicComponent implements OnInit {
 
+  @Input() comic!: ComicModel;
   constructor() { }
 
   ngOnInit(): void {
