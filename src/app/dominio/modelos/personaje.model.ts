@@ -6,13 +6,16 @@ export class PersonajeModel{
     private _descripcion: String;
     private _listaComics: ComicModel[];
     private _imagen: String;
+    private _urlConsultaComics: String;
+    
    
-    constructor(_id: number, _nombre: String, _descripcion: String, _listaComics: ComicModel[], _imagen: String){
+    constructor(_id: number, _nombre: String, _descripcion: String, _listaComics: ComicModel[], _imagen: String, _urlConsultaComics: String){
         this._id = _id
         this._nombre = _nombre
         this._descripcion = _descripcion
         this._listaComics = _listaComics
         this._imagen = _imagen
+        this._urlConsultaComics = _urlConsultaComics
     }
     
     public get id(): number {
@@ -44,5 +47,11 @@ export class PersonajeModel{
     }
     public set imagen(value: String) {
         this._imagen = value;
+    }
+    public get urlConsultaComics(): String {
+        return this._urlConsultaComics;
+    }
+    public set urlConsultaComics(value: String) {
+        this._urlConsultaComics = value;
     }
 }

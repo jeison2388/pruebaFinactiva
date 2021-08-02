@@ -8,12 +8,15 @@ import {MatCardModule} from '@angular/material/card';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ListaComicsComponent } from './lista-comics/lista-comics.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { TarjetaComicComponent } from './tarjeta-comic/tarjeta-comic.component';
 export const routes = [
   { path: '', component: ListaPersonajesComponent },
 ];
 
 @NgModule({
-  declarations: [ListaPersonajesComponent, TarjetaPersonajeComponent],
+  declarations: [ListaPersonajesComponent, TarjetaPersonajeComponent, ListaComicsComponent, TarjetaComicComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -21,7 +24,8 @@ export const routes = [
     MatCardModule,
     MatGridListModule,
     NgxPaginationModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDialogModule
   ]
 })
 export class ComicsModule { }

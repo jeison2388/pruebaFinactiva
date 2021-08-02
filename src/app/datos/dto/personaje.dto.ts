@@ -6,6 +6,7 @@ export interface PersonajeDto{
     name: String
     description: String
     comics: {
+        collectionURI: String
         items: ComicDto[]
     }
     thumbnail: ImagenDto

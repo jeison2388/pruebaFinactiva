@@ -12,12 +12,15 @@
    
     <mat-card-content>
         <h3 class="subtituloComicsRelacionado">
-       Comics relacionados
+       Related comics
       </h3 >
-      <ul>
-        <li>hola</li>
-        <li>hola</li>
-      </ul>
+      <mat-grid-list cols="2" rowHeight="25px" >
+        <mat-grid-tile *ngFor="let comic of miniListaComicsRelacionado"> 
+          <a (click)="verComic(comic.urlConsulta)" class="linkComicsRelacionado">{{comic.nombre}}</a>
+        </mat-grid-tile>
+        <mat-grid-tile *ngIf="miniListaComicsRelacionado.length > 0"><a (click)="verListaCompletaComics(personaje.urlConsultaComics)" class="linkComicsRelacionado">MORE</a>
+          </mat-grid-tile>
+      </mat-grid-list>
     </mat-card-content>
     
   </mat-card>

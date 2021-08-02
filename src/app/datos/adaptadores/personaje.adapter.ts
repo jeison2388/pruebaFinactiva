@@ -10,7 +10,8 @@ export class PersonajeAdapter{
             personajeDto.name, 
             personajeDto.description, 
             ComicAdapter.listDtoToModelBasic(personajeDto.comics.items),
-            personajeDto.thumbnail.path + '/standard_xlarge.' + personajeDto.thumbnail.extension);
+            personajeDto.thumbnail.path + '/standard_xlarge.' + personajeDto.thumbnail.extension,
+            personajeDto.comics.collectionURI);
     }
 
     static listDtoToModel(listaDto: ListaPersonajeDto) : ListaPersonajeModel{

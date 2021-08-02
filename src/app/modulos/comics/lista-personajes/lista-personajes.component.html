@@ -2,7 +2,7 @@
 
 <div  fxLayout={{ordenComponentes}} fxLayoutAlign={{alineacionComponentes}} >
     <div fxFlex="85" >
-        <mat-grid-list cols={{cantidadColumnas}} rowHeight={{tamFilas}} (window:resize)="reajustarGrid($event)"   >
+        <mat-grid-list cols={{cantidadColumnas}} rowHeight={{tamFilas}} (window:resize)="reajustarGrid($event)" >
             <mat-grid-tile *ngFor="let personaje of listaDatos.listaPersonajes 
             | paginate: { itemsPerPage: 10, currentPage: paginaActual, 
                 totalItems: listaDatos.totalRegistros
