@@ -1,13 +1,22 @@
 <app-buscador-personajes></app-buscador-personajes>
 
-<div>
-    <mat-grid-list cols="2" rowHeight="2:1">
-        <mat-grid-tile *ngFor="let personaje of listaDatos.listaPersonajes 
-        | paginate: { itemsPerPage: 10, currentPage: paginaActual, 
-            totalItems: listaDatos.totalRegistros
-            }">1</mat-grid-tile> 
-    </mat-grid-list>
+<div  fxLayout="row" >
+    <div fxFlex="85">
+        <mat-grid-list cols={{cantidadColumnas}} rowHeight="2:1" (window:resize)="reajustarGrid($event)">
+            <mat-grid-tile *ngFor="let personaje of listaDatos.listaPersonajes 
+            | paginate: { itemsPerPage: 10, currentPage: paginaActual, 
+                totalItems: listaDatos.totalRegistros
+                }">
+                <app-tarjeta-personaje [personaje] = "personaje"></app-tarjeta-personaje>
+            </mat-grid-tile> 
+        </mat-grid-list>
+    
+        <pagination-controls (pageChange)="cambiarPagina($event)"></pagination-controls>
+    </div>
 
-    <pagination-controls (pageChange)="cambiarPagina($event)"></pagination-controls>
+    <div fxFlex="15">
+        <p>aqui comics</p>
+    </div>
+   
 
 </div>

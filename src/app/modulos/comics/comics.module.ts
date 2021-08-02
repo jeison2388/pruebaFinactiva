@@ -7,6 +7,7 @@ import { TarjetaPersonajeComponent } from './tarjeta-personaje/tarjeta-personaje
 import {MatCardModule} from '@angular/material/card';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { FlexLayoutModule } from '@angular/flex-layout';
 export const routes = [
   { path: '', component: ListaPersonajesComponent },
 ];
@@ -20,6 +21,7 @@ export const routes = [
     MatCardModule,
     MatGridListModule,
     NgxPaginationModule,
+    FlexLayoutModule
   ]
 })
 export class ComicsModule { }

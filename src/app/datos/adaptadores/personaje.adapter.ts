@@ -9,8 +9,8 @@ export class PersonajeAdapter{
         return new PersonajeModel(personajeDto.id, 
             personajeDto.name, 
             personajeDto.description, 
-            ComicAdapter.listDtoToModelBasic(personajeDto.comics.items), 
-            personajeDto.thumbnail.path);
+            ComicAdapter.listDtoToModelBasic(personajeDto.comics.items),
+            personajeDto.thumbnail.path + '/standard_xlarge.' + personajeDto.thumbnail.extension);
     }
 
     static listDtoToModel(listaDto: ListaPersonajeDto) : ListaPersonajeModel{

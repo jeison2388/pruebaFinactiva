@@ -16,10 +16,12 @@ export class ListaPersonajesComponent implements OnInit {
 
   listaDatos: ListaPersonajeModel
   paginaActual: number
+  cantidadColumnas: number
 
   constructor(private servicioMarvel: MarvelService) { 
     this.listaDatos = new ListaPersonajeModel()
     this.paginaActual = 1
+    this.cantidadColumnas = 2
   }
 
   ngOnInit(): void {
@@ -28,7 +30,6 @@ export class ListaPersonajesComponent implements OnInit {
 
   getPersonajes(){
     this.servicioMarvel.getPersonajes(this.paginaActual).subscribe(result =>{
-      console.log(result)
       this.listaDatos = result
     })
   }
@@ -36,6 +37,10 @@ export class ListaPersonajesComponent implements OnInit {
   cambiarPagina(paginaNueva: number): void{
     this.paginaActual = paginaNueva
     this.getPersonajes()
+  }
+
+  reajustarGrid(event: any){
+    this.cantidadColumnas = (event.target.innerWidth <= 1080) ? 1 : 2 ;
   }
 
 }

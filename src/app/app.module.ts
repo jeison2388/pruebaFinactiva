@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app.routing';
 import { BuscadorPersonajesComponent } from './modulos/genericos/buscador-personajes/buscador-personajes.component';
 import { GenericosModule } from './modulos/genericos/genericos.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     NgxSpinnerModule,
     GenericosModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
