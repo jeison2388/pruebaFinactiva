@@ -1,10 +1,13 @@
-.example-card {
-    max-width: 600px;
+.tarjetaPersonaje{
+    max-width: 50%;
+    min-width: 50%;
   }
-  
-  .example-header-image {
-    background-image: url('https://media.vandalsports.com/i/640x360/4-2021/2021427125442_1.jpg');
-    background-size: cover;
+
+  @media all and (min-width: 480px) {
+    .tarjetaPersonaje{
+      max-width: 45%;
+      min-width: 45%;
+    }
   }
 
   .mat-card-avatar {

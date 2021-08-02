@@ -1,0 +1,34 @@
+.itemGrid{
+    max-width: 450px;
+    min-width: 450px;
+  }
+
+  @media all and (max-width: 1280px) {
+    .itemGrid{
+      max-width: 90%;
+      min-width: 90%;
+    }
+  }
+
+  @media all and (max-width: 720px) {
+    .itemGrid{
+      max-width: 80%;
+      min-width: 80%;
+    }
+  }
+
+  @media all and (max-width: 600px) {
+    .itemGrid{
+      max-width: 80%;
+      min-width: 80%;
+     
+    }
+  }
+
+  .mat-grid-tile {
+    //left: 0px !important;
+    //width: calc((50% - 5px) * 1 + 0px) !important;
+    //margin-top: 0px !important;
+    //padding-top: calc((45% - 5px) * 1 + 0px) !important;
+    
+  }

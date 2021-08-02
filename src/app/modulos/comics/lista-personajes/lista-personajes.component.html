@@ -1,13 +1,13 @@
 <app-buscador-personajes></app-buscador-personajes>
 
-<div  fxLayout="row" >
-    <div fxFlex="85">
-        <mat-grid-list cols={{cantidadColumnas}} rowHeight="2:1" (window:resize)="reajustarGrid($event)">
+<div  fxLayout={{ordenComponentes}} fxLayoutAlign={{alineacionComponentes}} >
+    <div fxFlex="85" >
+        <mat-grid-list cols={{cantidadColumnas}} rowHeight="2:1" (window:resize)="reajustarGrid($event)" [gutterSize]="'10px'"  >
             <mat-grid-tile *ngFor="let personaje of listaDatos.listaPersonajes 
             | paginate: { itemsPerPage: 10, currentPage: paginaActual, 
                 totalItems: listaDatos.totalRegistros
                 }">
-                <app-tarjeta-personaje [personaje] = "personaje"></app-tarjeta-personaje>
+                <app-tarjeta-personaje [personaje] = "personaje" class="itemGrid"></app-tarjeta-personaje>
             </mat-grid-tile> 
         </mat-grid-list>
     

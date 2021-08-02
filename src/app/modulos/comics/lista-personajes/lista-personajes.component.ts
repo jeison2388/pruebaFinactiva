@@ -17,11 +17,15 @@ export class ListaPersonajesComponent implements OnInit {
   listaDatos: ListaPersonajeModel
   paginaActual: number
   cantidadColumnas: number
+  ordenComponentes: string
+  alineacionComponentes: string
 
   constructor(private servicioMarvel: MarvelService) { 
     this.listaDatos = new ListaPersonajeModel()
     this.paginaActual = 1
     this.cantidadColumnas = 2
+    this.ordenComponentes = 'row'
+    this.alineacionComponentes = 'space-evenly start'
   }
 
   ngOnInit(): void {
@@ -40,7 +44,15 @@ export class ListaPersonajesComponent implements OnInit {
   }
 
   reajustarGrid(event: any){
-    this.cantidadColumnas = (event.target.innerWidth <= 1080) ? 1 : 2 ;
+    this.cantidadColumnas = (event.target.innerWidth <= 1280) ? 1 : 2 ;
+    if(event.target.innerWidth <= 1280) {
+      this.ordenComponentes = 'column'
+      this.alineacionComponentes = 'space-between '
+    } else {
+      this.ordenComponentes = 'row'
+      this.alineacionComponentes = 'space-evenly start'
+    }
+    
   }
 
 }
