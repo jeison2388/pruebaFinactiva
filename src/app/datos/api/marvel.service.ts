@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ComicModel } from 'src/app/dominio/modelos/comic.model';
 import { ListaPersonajeModel } from 'src/app/dominio/modelos/listaPersonajes.model';
 import { environment } from 'src/environments/environment';
+import { ComicAdapter } from '../adaptadores/comic.adapter';
 import { PersonajeAdapter } from '../adaptadores/personaje.adapter';
 import { ComicDto } from '../dto/comic.dto';
 import { ListaComicDto } from '../dto/listaComic.dto';
@@ -31,7 +33,8 @@ export class MarvelService {
     let url = urlComic + `?${API_KEY}${environment.apiKey}`
     return new Observable(observador =>{
       this.http.get<ListaComicDto>(url).subscribe(respuesta =>{
-        console.log(respuesta)
+        let comic: ComicModel = ComicAdapter.toModel(respuesta.data.results[0])
+        console.log(comic)
       })
     })
   }
@@ -40,7 +43,8 @@ export class MarvelService {
     let url = urlComic + `?${API_KEY}${environment.apiKey}`
     return new Observable(observador =>{
       this.http.get<ListaComicDto>(url).subscribe(respuesta =>{
-        console.log(respuesta)
+        let listaComics: ComicModel[] = ComicAdapter.listDtoToModel(respuesta.data.results)
+        console.log(listaComics)
       })
     })
   }

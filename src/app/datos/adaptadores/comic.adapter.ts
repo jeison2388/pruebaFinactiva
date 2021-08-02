@@ -17,4 +17,23 @@ export class ComicAdapter {
         })
         return listaComics
     }
+
+    static listDtoToModel(listaDto: ComicDto[]) : ComicModel[] {
+        let listaComics : ComicModel[] = []
+        listaDto.forEach(comic=>{
+            listaComics.push(this.toModel(comic))
+        })
+        return listaComics;
+    }
+
+    static toModel(comicDto: ComicDto): ComicModel{
+        let comic =  new ComicModel()
+        comic.id = comicDto.id
+        comic.nombre = comicDto.title
+        comic.descripcion = comicDto.description
+        comic.imagen = comicDto.thumbnail.path + '/portrait_uncanny'+ comicDto.thumbnail.extension
+        comic.precio = comicDto.prices[0].price
+
+        return comic
+    }
 }

@@ -2,10 +2,13 @@ import { ImagenDto } from "./imagen.dto";
 
 export interface ComicDto{
     id : number
-    images: ImagenDto[]
+    thumbnail: ImagenDto
     title: String
     description: String
-    precio : number
+    prices : {
+        type:String,
+        price:number
+    }[]
     resourceURI : string
     name: String
 }
