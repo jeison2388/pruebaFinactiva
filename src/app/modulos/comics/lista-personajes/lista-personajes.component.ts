@@ -19,6 +19,7 @@ export class ListaPersonajesComponent implements OnInit {
   cantidadColumnas: number
   ordenComponentes: string
   alineacionComponentes: string
+  tamFilas: string
 
   constructor(private servicioMarvel: MarvelService) { 
     this.listaDatos = new ListaPersonajeModel()
@@ -26,6 +27,7 @@ export class ListaPersonajesComponent implements OnInit {
     this.cantidadColumnas = 2
     this.ordenComponentes = 'row'
     this.alineacionComponentes = 'space-evenly start'
+    this.tamFilas = '450px'
   }
 
   ngOnInit(): void {
@@ -48,9 +50,11 @@ export class ListaPersonajesComponent implements OnInit {
     if(event.target.innerWidth <= 1280) {
       this.ordenComponentes = 'column'
       this.alineacionComponentes = 'space-between '
+      this.tamFilas = '400px'
     } else {
       this.ordenComponentes = 'row'
       this.alineacionComponentes = 'space-evenly start'
+      this.tamFilas = '450px'
     }
     
   }

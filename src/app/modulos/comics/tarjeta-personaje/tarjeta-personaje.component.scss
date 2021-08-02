@@ -27,6 +27,30 @@
       font-size: 20px;
   }
 
+  @media all and (max-width: 1280px) {
+    .mat-card-header .mat-card-title {
+      position: relative;
+      z-index: 2;
+      margin-top: -3%;
+      font-size: 17px;
+    }
+    .mat-card-actions {
+      margin-left: 10% !important;
+    }
+  }
+
+  @media all and (max-width: 720px) {
+    .mat-card-actions {
+      margin-left: 25% !important;
+    }
+  }
+
+  @media all and (max-width: 1080px) {
+    .mat-card-actions {
+      margin-left: 15% !important;
+    }
+  }
+
   .mat-card-header .mat-card-subtitle {
     text-align: justify;
     }
@@ -35,3 +59,15 @@
         color: rgba(0,0,0,.54);
         font-weight: bold;
     }
+
+    .mat-card-actions {
+      margin-left: 40%;
+    }
+
+.botonVerMas {
+  background-color: red;
+  border: red;
+  height: 35px;
+  color: white;
+  font-weight: bold;
+}
