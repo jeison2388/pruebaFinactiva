@@ -14,6 +14,8 @@ import { TarjetaComicComponent } from './tarjeta-comic/tarjeta-comic.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import {MatIconModule} from '@angular/material/icon';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 export const routes = [
   { path: '', component: ListaPersonajesComponent },
 ];
@@ -31,7 +33,8 @@ export const routes = [
     MatDialogModule,
     IvyCarouselModule,
     MatIconModule,
-    ScrollingModule
+    ScrollingModule,
+    MatSnackBarModule
   ]
 })
 export class ComicsModule { }

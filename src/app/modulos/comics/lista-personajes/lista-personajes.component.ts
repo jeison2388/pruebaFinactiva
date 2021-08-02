@@ -4,6 +4,7 @@ import { MarvelService } from 'src/app/datos/api/marvel.service';
 import { ListaPersonajeModel } from 'src/app/dominio/modelos/listaPersonajes.model';
 import { PersonajeModel } from 'src/app/dominio/modelos/personaje.model';
 import { MatPaginator } from '@angular/material/paginator';
+import { DbLocalService } from 'src/app/datos/api/db-local.service.ts.service';
 
 @Component({
   selector: 'app-lista-personajes',
@@ -21,7 +22,7 @@ export class ListaPersonajesComponent implements OnInit {
   alineacionComponentes: string
   tamFilas: string
 
-  constructor(private servicioMarvel: MarvelService) { 
+  constructor(private servicioMarvel: MarvelService, private servicioDbLocal: DbLocalService) { 
     this.listaDatos = new ListaPersonajeModel()
     this.paginaActual = 1
     this.cantidadColumnas = 2
@@ -32,6 +33,7 @@ export class ListaPersonajesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPersonajes()
+    this.servicioDbLocal.inicializarListaFavoritos();
   }
 
   getPersonajes(){
