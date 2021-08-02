@@ -4,6 +4,7 @@ import { MarvelService } from 'src/app/datos/api/marvel.service';
 import { ComicModel } from 'src/app/dominio/modelos/comic.model';
 import { PersonajeModel } from 'src/app/dominio/modelos/personaje.model';
 import { ListaComicsComponent } from '../lista-comics/lista-comics.component';
+import { TarjetaComicComponent } from '../tarjeta-comic/tarjeta-comic.component';
 
 @Component({
   selector: 'app-tarjeta-personaje',
@@ -38,8 +39,18 @@ export class TarjetaPersonajeComponent implements OnInit {
 
   verComic(urlComic: String){
     this.servicioMarvel.getComicDesdeUrl(urlComic).subscribe(respuesta =>{
-      console.log(respuesta)
+      this.verDetalleComic(respuesta)
     })
+  }
+
+  verDetalleComic(comicMostrar: ComicModel){
+    const dialogRef = this.ventanaModal.open(TarjetaComicComponent, {
+      data: comicMostrar
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
  

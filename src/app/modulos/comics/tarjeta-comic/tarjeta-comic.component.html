@@ -1,4 +1,7 @@
 <div>
+  <div fxLayout="row" fxLayoutAlign="end end" *ngIf="mostrarIconoCerrar">
+    <mat-icon class="close-icon" [mat-dialog-close]="true" >close</mat-icon>
+  </div>
     <mat-card class="example-card">
         <mat-card-header>
             <img mat-card-avatar src={{comic.imagen}} >

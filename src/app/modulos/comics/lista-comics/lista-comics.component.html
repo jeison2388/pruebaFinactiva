@@ -1,6 +1,11 @@
-<carousel [loop]= "true" [cellWidth]="500" [height]="450">
+<div fxLayout="row" fxLayoutAlign="end end">
+    <mat-icon class="close-icon" [mat-dialog-close]="true" >close</mat-icon>
+</div>
+    
+
+<carousel [loop]= "true" [cellWidth]="480" [height]="450">
     <div class="carousel-cell" *ngFor="let comic of listaComicsVisualizar" >
-       <app-tarjeta-comic [comic]="comic"></app-tarjeta-comic>
+            <app-tarjeta-comic [comic]="comic"></app-tarjeta-comic>
     </div>
     <div class="carousel-cell"> </div>
 </carousel>

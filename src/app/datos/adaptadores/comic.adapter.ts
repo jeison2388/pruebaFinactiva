@@ -30,7 +30,7 @@ export class ComicAdapter {
         let comic =  new ComicModel()
         comic.id = comicDto.id
         comic.nombre = comicDto.title
-        comic.descripcion = comicDto.description
+        comic.descripcion = comicDto.description.length > 280 ? comicDto.description.slice(0,280) : comicDto.description
         comic.imagen = comicDto.thumbnail.path + '/portrait_uncanny.'+ comicDto.thumbnail.extension
         comic.precio = comicDto.prices[0].price
         return comic

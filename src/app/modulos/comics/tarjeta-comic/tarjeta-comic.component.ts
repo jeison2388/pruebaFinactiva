@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ComicModel } from 'src/app/dominio/modelos/comic.model';
 
 @Component({
@@ -9,9 +10,16 @@ import { ComicModel } from 'src/app/dominio/modelos/comic.model';
 export class TarjetaComicComponent implements OnInit {
 
   @Input() comic!: ComicModel;
-  constructor() { }
+  mostrarIconoCerrar: boolean
+  constructor(@Inject(MAT_DIALOG_DATA) public datosRecibidos: ComicModel) { 
+    this.mostrarIconoCerrar = false
+  }
 
   ngOnInit(): void {
+    if(!this.comic){
+      this.comic = this.datosRecibidos
+      this.mostrarIconoCerrar = true
+    }
   }
 
 }

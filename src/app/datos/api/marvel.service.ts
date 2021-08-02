@@ -28,7 +28,7 @@ export class MarvelService {
     })
   }
 
-  getComicDesdeUrl(urlComic:String){
+  getComicDesdeUrl(urlComic:String): Observable<ComicModel>{
     let url = urlComic + `?${API_KEY}${environment.apiKey}`
     return new Observable(observador =>{
       this.http.get<ListaComicDto>(url).subscribe(respuesta =>{
