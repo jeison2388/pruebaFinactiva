@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { ComicModel } from 'src/app/dominio/modelos/comic.model';
 import { ListaPersonajeModel } from 'src/app/dominio/modelos/listaPersonajes.model';
 import { environment } from 'src/environments/environment';
@@ -9,17 +9,29 @@ import { PersonajeAdapter } from '../adaptadores/personaje.adapter';
 import { ComicDto } from '../dto/comic.dto';
 import { ListaComicDto } from '../dto/listaComic.dto';
 import { ListaPersonajeDto } from '../dto/listaPersonaje.dto';
-import { API_KEY, CANTIDAD_REGISTROS, PAGINA_SOLICITADA, SERVICIO_PERSONAJES } from './nombreServicios';
+import { API_KEY, BUSQUEDA_INICIA_CON, CANTIDAD_REGISTROS, PAGINA_SOLICITADA, SERVICIO_PERSONAJES } from './nombreServicios';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MarvelService {
 
+  observadorBusquedaPersonajes: Subject<string> = new Subject<string>();
+
   constructor(public http: HttpClient) { }
 
   getPersonajes(numeroPagina: number): Observable<ListaPersonajeModel>{
     let url = environment.urlBase + SERVICIO_PERSONAJES + CANTIDAD_REGISTROS + PAGINA_SOLICITADA + `${numeroPagina}&` + API_KEY + environment.apiKey
+    return new Observable(observador =>{
+      this.http.get<ListaPersonajeDto>(url).subscribe(respuesta =>{
+        let listaPersonaje: ListaPersonajeModel = PersonajeAdapter.listDtoToModel(respuesta)
+        observador.next(listaPersonaje)
+      })
+    })
+  }
+
+  getPersonajesBuscador(numeroPagina:number, cadenaBusqueda:String): Observable<ListaPersonajeModel>{
+    let url = environment.urlBase + SERVICIO_PERSONAJES + BUSQUEDA_INICIA_CON + `${cadenaBusqueda}&`  + CANTIDAD_REGISTROS + PAGINA_SOLICITADA + `${numeroPagina}&` + API_KEY + environment.apiKey
     return new Observable(observador =>{
       this.http.get<ListaPersonajeDto>(url).subscribe(respuesta =>{
         let listaPersonaje: ListaPersonajeModel = PersonajeAdapter.listDtoToModel(respuesta)

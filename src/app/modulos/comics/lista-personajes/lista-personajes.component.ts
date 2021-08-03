@@ -23,6 +23,8 @@ export class ListaPersonajesComponent implements OnInit {
   alineacionComponentes: string
   tamFilas: string
   listaFavoritos: ComicModel[]
+  estaUsandoBuscador: boolean
+  cadenaBusqueda: String
 
   constructor(private servicioMarvel: MarvelService, private servicioDbLocal: DbLocalService) { 
     this.listaDatos = new ListaPersonajeModel()
@@ -32,18 +34,33 @@ export class ListaPersonajesComponent implements OnInit {
     this.alineacionComponentes = 'space-evenly start'
     this.tamFilas = '450px'
     this.listaFavoritos = []
+    this.estaUsandoBuscador = false
+    this.cadenaBusqueda = ''
   }
 
   ngOnInit(): void {
     this.getPersonajes()
     this.servicioDbLocal.inicializarListaFavoritos();
     this.listaFavoritos = this.servicioDbLocal.listaComicsFavoritos
+
+    this.servicioMarvel.observadorBusquedaPersonajes.subscribe(cadenaBusqueda =>{
+      cadenaBusqueda.length > 0 ? this.estaUsandoBuscador = true : this.estaUsandoBuscador = false
+      this.cadenaBusqueda = cadenaBusqueda
+      this.getPersonajes()
+    })
   }
 
   getPersonajes(){
-    this.servicioMarvel.getPersonajes(this.paginaActual).subscribe(result =>{
-      this.listaDatos = result
-    })
+    if(this.estaUsandoBuscador){
+      this.servicioMarvel.getPersonajesBuscador(this.paginaActual, this.cadenaBusqueda).subscribe(result =>{
+        this.listaDatos = result
+      })
+    }else{
+      this.servicioMarvel.getPersonajes(this.paginaActual).subscribe(result =>{
+        this.listaDatos = result
+      })
+    }
+    
   }
 
   cambiarPagina(paginaNueva: number): void{

@@ -4,6 +4,17 @@
        
             <img src="../../assets/marvelLogo.png" 
            class="imgLogo">
-         
+
+           <form [formGroup]="buscadorForm"> 
+           <mat-form-field  appearance="fill" class="contenedorBuscador">
+            <input matInput type="text" class="buscadorPersonajes" placeholder="Search characters...."  formControlName="buscador">
+            
+              <mat-icon class="iconoBuscador">search</mat-icon>
+            
+          </mat-form-field>
+          </form>
+
+
+
   </mat-toolbar>
   </p>
