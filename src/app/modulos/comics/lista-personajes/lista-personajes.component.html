@@ -1,7 +1,7 @@
 <app-buscador-personajes></app-buscador-personajes>
 
 <div  fxLayout={{ordenComponentes}} fxLayoutAlign={{alineacionComponentes}} >
-    <div fxFlex="85" >
+    <div fxFlex="80" >
         <mat-grid-list cols={{cantidadColumnas}} rowHeight={{tamFilas}} (window:resize)="reajustarGrid($event)" >
             <mat-grid-tile *ngFor="let personaje of listaDatos.listaPersonajes 
             | paginate: { itemsPerPage: 10, currentPage: paginaActual, 
@@ -14,8 +14,23 @@
         <pagination-controls (pageChange)="cambiarPagina($event)"></pagination-controls>
     </div>
 
-    <div fxFlex="15">
-        <p>aqui comics</p>
+    <div fxFlex="20" class="contenedorFavoritos">
+        <div fxLayout='column' >
+            <div fxLayout='row'  >
+                <img src="../../../../assets/favourites.png">
+                <h2> My favourites</h2>
+            </div>
+            <div >
+                <mat-list >
+                    <mat-list-item  *ngFor="let comicFavorito of listaFavoritos"  >
+                        <app-tarjeta-comic-favorito [comic]="comicFavorito" ></app-tarjeta-comic-favorito>
+                    </mat-list-item>
+                    
+                  </mat-list>
+            </div>
+            
+        </div>
+       
     </div>
    
 

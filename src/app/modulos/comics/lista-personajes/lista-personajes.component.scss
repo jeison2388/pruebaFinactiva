@@ -26,10 +26,14 @@
     }
   }
 
-  .mat-grid-tile {
-    //left: 0px !important;
-    //width: calc((50% - 5px) * 1 + 0px) !important;
-    //margin-top: 0px !important;
-    //padding-top: calc((45% - 5px) * 1 + 0px) !important;
-    
+  .mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
+    display: inline-block !important;
+    height: max-content;
+    margin-bottom: 25px;
+  }
+  
+
+  .contenedorFavoritos{
+    background-color: #F3F1F1;
+    height: 100%;
   }

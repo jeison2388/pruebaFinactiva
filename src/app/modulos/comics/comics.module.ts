@@ -15,13 +15,15 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
 import {MatIconModule} from '@angular/material/icon';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatListModule} from '@angular/material/list';
+import { TarjetaComicFavoritoComponent } from './tarjeta-comic-favorito/tarjeta-comic-favorito.component';
 
 export const routes = [
   { path: '', component: ListaPersonajesComponent },
 ];
 
 @NgModule({
-  declarations: [ListaPersonajesComponent, TarjetaPersonajeComponent, ListaComicsComponent, TarjetaComicComponent],
+  declarations: [ListaPersonajesComponent, TarjetaPersonajeComponent, ListaComicsComponent, TarjetaComicComponent, TarjetaComicFavoritoComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -34,7 +36,8 @@ export const routes = [
     IvyCarouselModule,
     MatIconModule,
     ScrollingModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatListModule
   ]
 })
 export class ComicsModule { }

@@ -1,0 +1,27 @@
+.mat-card-avatar {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0%;
+  }
+
+  .mat-card:not([class*=mat-elevation-z]) {
+     box-shadow: 0px 0px 0px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0px rgb(0 0 0 / 0%), 0px 0px 0px 0px rgb(0 0 0 / 0%); 
+    }
+
+    .mat-card{
+        background:transparent;
+    }
+
+    .iconoEliminarFavoritos{
+        position: absolute;
+        z-index: 2;
+        margin-top: -4% !important;
+        margin-left: 83%;
+        height: 25px;
+        width: 25px;
+        color: #F3F1F1;
+        background-color: black;
+        border-radius: 50%;
+    }
+
+  
