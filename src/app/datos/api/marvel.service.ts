@@ -9,7 +9,7 @@ import { PersonajeAdapter } from '../adaptadores/personaje.adapter';
 import { ComicDto } from '../dto/comic.dto';
 import { ListaComicDto } from '../dto/listaComic.dto';
 import { ListaPersonajeDto } from '../dto/listaPersonaje.dto';
-import { API_KEY, BUSQUEDA_INICIA_CON, CANTIDAD_REGISTROS, PAGINA_SOLICITADA, SERVICIO_PERSONAJES } from './nombreServicios';
+import { API_KEY, BUSQUEDA_INICIA_CON, CANTIDAD_REGISTROS, COMPLEMENTO_COMICS_PERSONAJE, PAGINA_SOLICITADA, SERVICIO_COMICS, SERVICIO_COMICS_PERSONAJE, SERVICIO_PERSONAJES } from './nombreServicios';
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +41,9 @@ export class MarvelService {
   }
 
   getComicDesdeUrl(urlComic:String): Observable<ComicModel>{
-    let url = urlComic + `?${API_KEY}${environment.apiKey}`
+    let vectorUrl = urlComic.split('comics/')
+    let idComic : String = vectorUrl[1]
+    let url = environment.urlBase + SERVICIO_COMICS + idComic +`?${API_KEY}${environment.apiKey}`
     return new Observable(observador =>{
       this.http.get<ListaComicDto>(url).subscribe(respuesta =>{
         let comic: ComicModel = ComicAdapter.toModel(respuesta.data.results[0])
@@ -51,7 +53,10 @@ export class MarvelService {
   }
 
   getTodosComicsPersonajeDesdeUrl(urlComic:String): Observable<ComicModel[]>{
-    let url = urlComic + `?${API_KEY}${environment.apiKey}`
+    let vectorUrl = urlComic.split(SERVICIO_COMICS_PERSONAJE)
+    console.log(vectorUrl)
+    let idPersonaje : String = vectorUrl[1]
+    let url = environment.urlBase + SERVICIO_COMICS_PERSONAJE + idPersonaje + `?${API_KEY}${environment.apiKey}`
     return new Observable(observador =>{
       this.http.get<ListaComicDto>(url).subscribe(respuesta =>{
         let listaComics: ComicModel[] = ComicAdapter.listDtoToModel(respuesta.data.results)
