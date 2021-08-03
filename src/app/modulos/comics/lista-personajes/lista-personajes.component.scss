@@ -37,3 +37,13 @@
     background-color: #F3F1F1;
     height: 100%;
   }
+
+.my-pagination .ngx-pagination .pagination-previous a::before, .ngx-pagination .pagination-previous.disabled::before {
+    content: '+';
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+.my-pagination .ngx-pagination li {
+  display: table-column;
+}

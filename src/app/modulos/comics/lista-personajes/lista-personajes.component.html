@@ -11,7 +11,11 @@
             </mat-grid-tile> 
         </mat-grid-list>
     
-        <pagination-controls (pageChange)="cambiarPagina($event)"></pagination-controls>
+        <div fxLayout='row' fxLayoutAlign="center center">
+            <pagination-controls (pageChange)="cambiarPagina($event)"  previousLabel=""
+            nextLabel="" class="my-pagination"></pagination-controls>
+        </div>
+       
     </div>
 
     <div fxFlex="20" class="contenedorFavoritos">
@@ -25,7 +29,6 @@
                     <mat-list-item  *ngFor="let comicFavorito of listaFavoritos"  >
                         <app-tarjeta-comic-favorito [comic]="comicFavorito" ></app-tarjeta-comic-favorito>
                     </mat-list-item>
-                    
                   </mat-list>
             </div>
         </div>
