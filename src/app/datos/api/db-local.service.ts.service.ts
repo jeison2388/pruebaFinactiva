@@ -60,8 +60,6 @@ export class DbLocalService {
   }
 
   existeComic(comicBuscar: ComicModel): boolean{
-    console.log(this.listaComicsFavoritos)
-    
     return this.listaComicsFavoritos.find(comic => comic.id == comicBuscar.id) ? true : false
   }
 }

@@ -1,6 +1,7 @@
 <app-buscador-personajes></app-buscador-personajes>
 
 <div  fxLayout={{ordenComponentes}} fxLayoutAlign={{alineacionComponentes}} >
+    <button mat-raised-button class="botonComicsFavoritosRamdom" (click)="generarComicsFavoritosAleatoriamente()" >Randomly favorite comics</button>
     <div fxFlex="80" >
         <mat-grid-list cols={{cantidadColumnas}} rowHeight={{tamFilas}} (window:resize)="reajustarGrid($event)" >
             <mat-grid-tile *ngFor="let personaje of listaDatos.listaPersonajes 
