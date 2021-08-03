@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DbLocalService } from 'src/app/datos/api/db-local.service.ts.service';
 import { ComicModel } from 'src/app/dominio/modelos/comic.model';
 
 @Component({
@@ -10,9 +11,13 @@ export class TarjetaComicFavoritoComponent implements OnInit {
 
   @Input() comic!: ComicModel;
 
-  constructor() { }
+  constructor(private servicioDbLocal: DbLocalService) { }
 
   ngOnInit(): void {
+  }
+
+  eliminarComicDeFavoritos(){
+    this.servicioDbLocal.eliminarComicDeFavoritos(this.comic)
   }
 
 }
