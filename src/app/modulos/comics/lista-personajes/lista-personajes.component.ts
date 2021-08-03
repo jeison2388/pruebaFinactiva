@@ -88,33 +88,44 @@ export class ListaPersonajesComponent implements OnInit {
     let comicsSeleccionado: ComicModel[] = []
     while (!encontroComic) {
       let personajeAleatorio = Math.floor(Math.random() * (this.listaDatos.listaPersonajes.length));
-      let comicAleatorio = Math.floor(Math.random() * (this.listaDatos.listaPersonajes[personajeAleatorio].listaComics.length));
-      
-      if (this.listaDatos.listaPersonajes[personajeAleatorio].listaComics[comicAleatorio].urlConsulta != undefined) {
-        let urlConsulta = this.listaDatos.listaPersonajes[personajeAleatorio].listaComics[comicAleatorio].urlConsulta
-        idComicAleatorio = parseInt(urlConsulta.split('/comics/')[1])
-        let comicAux : ComicModel = new ComicModel()
-        comicAux.id = idComicAleatorio
-        comicAux.urlConsulta = urlConsulta
-        if(!this.servicioDbLocal.existeComic(comicAux)) {
-          comicsSeleccionado.push(comicAux)
-          comicsSeleccionado.length > 2 ? encontroComic = true : encontroComic = false
-        }else {
+      if (this.listaDatos.listaPersonajes[personajeAleatorio].listaComics.length > 0) {
+        let comicAleatorio = Math.floor(Math.random() * (this.listaDatos.listaPersonajes[personajeAleatorio].listaComics.length));
+        if (this.listaDatos.listaPersonajes[personajeAleatorio].listaComics[comicAleatorio].urlConsulta.length > 0) {
+          let urlConsulta = this.listaDatos.listaPersonajes[personajeAleatorio].listaComics[comicAleatorio].urlConsulta
+          idComicAleatorio = parseInt(urlConsulta.split('/comics/')[1])
+          let comicAux: ComicModel = new ComicModel()
+          comicAux.id = idComicAleatorio
+          comicAux.urlConsulta = urlConsulta
+          if (!this.servicioDbLocal.existeComic(comicAux) && !this.existeComicsEnListaRamdom(comicsSeleccionado, comicAux)) {
+            comicsSeleccionado.push(comicAux)
+            comicsSeleccionado.length > 2 ? encontroComic = true : encontroComic = false
+          } else {
+            encontroComic = false
+          }
+        } else {
           encontroComic = false
         }
-      } else {
-        encontroComic = false
       }
     }
     this.agregarComicsAleatoriosListaFavoritos(comicsSeleccionado)
   }
 
-  agregarComicsAleatoriosListaFavoritos(listaComicsAleatorios: ComicModel[]){
-    for(let i = 0; i < listaComicsAleatorios.length; i++) {
-      this.servicioMarvel.getComicDesdeUrl(listaComicsAleatorios[i].urlConsulta).subscribe(comicAgregar =>{
+  agregarComicsAleatoriosListaFavoritos(listaComicsAleatorios: ComicModel[]) {
+    for (let i = 0; i < listaComicsAleatorios.length; i++) {
+      this.servicioMarvel.getComicDesdeUrl(listaComicsAleatorios[i].urlConsulta).subscribe(comicAgregar => {
         this.servicioDbLocal.agregarComicAFavoritos(comicAgregar)
       })
     }
+  }
+
+  existeComicsEnListaRamdom(lista: ComicModel[], comic: ComicModel): boolean {
+    let existe: boolean = false
+    lista.forEach(comicComparar => {
+      if (comicComparar.id == comic.id) {
+        existe = true
+      }
+    })
+    return existe
   }
 
 }
